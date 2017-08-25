@@ -17,6 +17,7 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - python  # [win]
     - posix  # [win]
     - m2w64-xz  # [win]
@@ -25,7 +26,7 @@ requirements:
     - xz 5.2.*  # [not win]
     - freetype 2.8.1  # [not win]
     - fontconfig 2.12.*  # [not win]
-    - glib 2.55.*  # [not win]
+    - glib   # [not win]
     - pixman 0.34.*
     - libpng >=1.6.32,<1.6.35
     - zlib 1.2.11
@@ -35,8 +36,8 @@ requirements:
   run:
     - freetype 2.8.1  # [not win]
     - fontconfig 2.12.*  # [not win]
-    - libpng >=1.6.32,<1.6.35
-    - glib 2.55.*  # [not win]
+    - libpng >=1.6.28,<1.7
+    - glib >=2.53,<3.0a0  # [not win]
     - pixman 0.34.*
     - zlib 1.2.11
     - icu 58.*

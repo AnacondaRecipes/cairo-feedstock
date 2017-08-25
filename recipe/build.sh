@@ -17,6 +17,7 @@ export LDFLAGS=${LDFLAGS}" -L${PREFIX}/lib"
 
 ./configure \
     --prefix="${PREFIX}" \
+    --host=${HOST} \
     --enable-warnings \
     --enable-ft \
     --enable-ps \
@@ -25,7 +26,11 @@ export LDFLAGS=${LDFLAGS}" -L${PREFIX}/lib"
     --disable-gtk-doc \
     $XWIN_ARGS
 
+<<<<<<< HEAD
 make -j${CPU_COUNT}
+=======
+make -j${CPU_COUNT} V=1
+>>>>>>> Fix glib dependency
 # FAIL: check-link on OS X
 # Hangs for > 10 minutes on Linux
 #make check -j${CPU_COUNT}
