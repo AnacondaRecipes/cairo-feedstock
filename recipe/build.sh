@@ -22,6 +22,7 @@ bash autogen.sh
 find $PREFIX -name '*.la' -delete
 ./configure \
     --prefix="${PREFIX}" \
+    --host=${HOST} \
     --enable-warnings \
     --enable-ft \
     --enable-ps \
