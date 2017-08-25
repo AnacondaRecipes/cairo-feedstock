@@ -25,25 +25,23 @@ requirements:
     - m2w64-xz  # [win]
     - pkg-config  # [not win]
     - libtool  # [not win]
-    - xz 5.2.*  # [not win]
+  host:
+    - xz  # [not win]
+    - icu
+    - libpng
+    - zlib
     - freetype 2.7|2.7.*  # [not win]
     - fontconfig 2.12.*  # [not win]
     - glib >=2.53,<3.0a0  # [not win]
     - pixman 0.34.*
-    - libpng >=1.6.28,<1.7
-    - zlib 1.2.*
-    - icu 58.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
   run:
     - freetype 2.7|2.7.*  # [not win]
     - fontconfig 2.12.*  # [not win]
-    - libpng >=1.6.28,<1.7
     - glib >=2.53,<3.0a0  # [not win]
     - pixman 0.34.*
-    - zlib 1.2.*
-    - icu 58.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
