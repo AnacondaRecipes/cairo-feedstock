@@ -10,10 +10,6 @@ source:
 
 build:
   number: 0
-  skip: True  # [win and py36]
-  features:
-    - vc9  # [win and py27]
-    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
@@ -23,26 +19,18 @@ requirements:
     - m2w64-xz  # [win]
     - pkg-config  # [not win]
     - libtool  # [not win]
-    - xz 5.2.*  # [not win]
-    - freetype 2.8.1  # [not win]
-    - fontconfig 2.12.*  # [not win]
+  host:
+    - xz  # [not win]
+    - icu
+    - libpng
+    - zlib
+    - freetype     # [not win]
+    - fontconfig   # [not win]
     - glib   # [not win]
-    - pixman 0.34.*
-    - libpng >=1.6.32,<1.6.35
-    - zlib 1.2.11
-    - icu 58.*
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
-  run:
-    - freetype 2.8.1  # [not win]
-    - fontconfig 2.12.*  # [not win]
-    - libpng >=1.6.28,<1.7
-    - glib >=2.53,<3.0a0  # [not win]
-    - pixman 0.34.*
-    - zlib 1.2.11
-    - icu 58.*
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - pixman
+    - libpng
+    - zlib
+    - icu
 
 test:
   commands:
