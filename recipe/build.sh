@@ -13,6 +13,7 @@ fi
 
 ./configure \
     --prefix="${PREFIX}" \
+    --host=${HOST} \
     --enable-warnings \
     --enable-ft \
     --enable-ps \
@@ -21,7 +22,7 @@ fi
     --disable-gtk-doc \
     $XWIN_ARGS
 
-make
+make -j${CPU_COUNT} V=1
 # FAIL: check-link on OS X
 # Hangs for > 10 minutes on Linux
 # make check
