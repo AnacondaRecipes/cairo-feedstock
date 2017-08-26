@@ -26,21 +26,18 @@ requirements:
     - pkg-config  # [not win]
     - libtool  # [not win]
   host:
-    - xz  # [not win]
+    - fontconfig  # [not win]
+    - freetype  # [not win]
+    - glib  # [not win]
     - icu
     - libpng
+    - xz  # [not win]
     - zlib
-    - freetype 2.7|2.7.*  # [not win]
-    - fontconfig 2.12.*  # [not win]
-    - glib >=2.53,<3.0a0  # [not win]
     - pixman 0.34.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
   run:
-    - freetype 2.7|2.7.*  # [not win]
-    - fontconfig 2.12.*  # [not win]
-    - glib >=2.53,<3.0a0  # [not win]
     - pixman 0.34.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
