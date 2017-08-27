@@ -22,7 +22,7 @@ fi
     --disable-gtk-doc \
     $XWIN_ARGS
 
-make -j${CPU_COUNT} V=1
+make -j${CPU_COUNT} ${VERBOSE_AT}
 # FAIL: check-link on OS X
 # Hangs for > 10 minutes on Linux
 # make check
