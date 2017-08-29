@@ -21,14 +21,14 @@ bash autogen.sh
 # the build while this happens.
 find $PREFIX -name '*.la' -delete
 ./configure \
-    --prefix="${PREFIX}" \
-    --host=${HOST} \
-    --enable-warnings \
-    --enable-ft \
-    --enable-ps \
-    --enable-pdf \
-    --enable-svg \
-    --disable-gtk-doc \
+    --prefix="${PREFIX}"  \
+    --host=${HOST}        \
+    --enable-ft           \
+    --enable-ps           \
+    --enable-pdf          \
+    --enable-svg          \
+    --enable-pthread      \
+    --disable-gtk-doc     \
     $XWIN_ARGS
 
 make -j${CPU_COUNT}
