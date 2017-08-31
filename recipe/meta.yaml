@@ -58,6 +58,14 @@ about:
   home: http://cairographics.org/
   license: LGPL 2.1 or MPL 1.1
   summary: 'Cairo is a 2D graphics library with support for multiple output devices.'
+  
+  description: |
+    Cairo is a 2D graphics library with support for multiple output devices.
+    It is designed to produce consistent output on all output media while
+    taking advantage of display hardware acceleration when available.
+  doc_url: http://cairographics.org/documentation/
+  dev_url: https://cgit.freedesktop.org/cairo/
+  doc_source_url: https://cgit.freedesktop.org/cairo/tree/doc
 
 extra:
   recipe-maintainers:
