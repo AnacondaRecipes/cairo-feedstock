@@ -10,6 +10,12 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   export LDFLAGS=${LDFLAGS_CC}
 fi
 
+# Most other autotools-based build systems add
+# prefix/include and prefix/lib automatically!
+export CFLAGS=${CFLAGS}" -I${PREFIX}/include"
+export CXXFLAGS=${CXXFLAGS}" -I${PREFIX}/include"
+export LDFLAGS=${LDFLAGS}" -L${PREFIX}/lib"
+
 ./configure \
     --prefix="${PREFIX}"  \
     --host=${HOST}        \
