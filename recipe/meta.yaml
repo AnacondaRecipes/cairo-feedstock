@@ -9,23 +9,30 @@ source:
   sha1: 28c59d85d6b790c21b8b59ece73a6a1dda28d69a
 
 build:
-  number: 0
+  number: 4
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - python  # [win]
-    - posix  # [win]
-    - m2w64-xz  # [win]
-    - pkg-config  # [not win]
-    - libtool  # [not win]
+    - {{ compiler('cxx') }}
+    - {{ cdt('libx11-devel') }}          # [linux]
+    - {{ cdt('libxau-devel') }}          # [linux]
+    # - {{ cdt('libxcb') }}                # [linux]
+    - {{ cdt('libxext-devel') }}         # [linux]
+    - {{ cdt('libxrender-devel') }}      # [linux]
+    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
+    - python                             # [win]
+    - posix                              # [win]
+    - m2w64-xz                           # [win]
+    - pkg-config                         # [not win]
+    - libtool                            # [not win]
   host:
-    - fontconfig  # [not win]
-    - freetype  # [not win]
-    - glib  # [not win]
+    - fontconfig                         # [not win]
+    - freetype                           # [not win]
+    - glib                               # [not win]
     - icu
     - libpng
-    - xz  # [not win]
+    - xz                                 # [not win]
     - zlib
     - freetype     # [not win]
     - fontconfig   # [not win]
@@ -34,6 +41,7 @@ requirements:
     - libpng
     - zlib
     - icu
+    - libxcb
 
 test:
   commands:
