@@ -40,13 +40,13 @@ requirements:
     - libpng
     - xz                                 # [not win]
     - zlib
-    - libxcb
+    - libxcb                             # [linux]
     - pixman 0.34.*
     - vc 9                               # [win and py27]
     - vc 10                              # [win and py34]
     - vc 14                              # [win and py>=35]
   run:
-    - libxcb
+    - libxcb                             # [linux]
     - pixman 0.34.*
     - vc 9                               # [win and py27]
     - vc 10                              # [win and py34]
