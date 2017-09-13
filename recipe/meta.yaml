@@ -31,17 +31,14 @@ requirements:
     - freetype                           # [not win]
     - glib                               # [not win]
     - icu
-    - libpng
     - xz                                 # [not win]
-    - zlib
     - freetype     # [not win]
     - fontconfig   # [not win]
     - glib   # [not win]
     - pixman
     - libpng
-    - zlib
-    - icu
     - libxcb
+    - zlib
 
 test:
   commands:
