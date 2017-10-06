@@ -10,12 +10,13 @@ source:
   sha1: 28c59d85d6b790c21b8b59ece73a6a1dda28d69a
 
 build:
-  number: 4
-  skip: True  # [win and py>35]
+  number: 5
   features:
-    - vc9     # [win and py27]
-    - vc10    # [win and py34]
-    - vc14    # [win and py>=35]
+    - vc{{ vc }}     # [win]
+  run_exports:
+    # Excellent behavior.  Only add new symbols.
+    #    https://abi-laboratory.pro/tracker/timeline/cairo/
+    - {{ pin_subpackage('cairo') }}
 
 requirements:
   build:
@@ -27,7 +28,6 @@ requirements:
     - {{ cdt('libxext-devel') }}         # [linux]
     - {{ cdt('libxrender-devel') }}      # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - python                             # [win]
     - posix                              # [win]
     - m2w64-xz                           # [win]
     - pkg-config                         # [not win]
@@ -41,16 +41,7 @@ requirements:
     - xz                                 # [not win]
     - zlib
     - libxcb                             # [linux]
-    - pixman 0.34.*
-    - vc 9                               # [win and py27]
-    - vc 10                              # [win and py34]
-    - vc 14                              # [win and py>=35]
-  run:
-    - libxcb                             # [linux]
-    - pixman 0.34.*
-    - vc 9                               # [win and py27]
-    - vc 10                              # [win and py34]
-    - vc 14                              # [win and py>=35]
+    - pixman
 
 test:
   commands:
