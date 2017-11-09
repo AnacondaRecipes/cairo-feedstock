@@ -1,3 +1,4 @@
+@echo on
 setlocal enableextensions enabledelayedexpansion
 
 :: Trailing semicolon in this variable as set by current (2017/01)
