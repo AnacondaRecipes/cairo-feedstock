@@ -1,21 +1,5 @@
 #!/bin/bash
 
-# As of Mac OS 10.8, X11 is no longer included by default
-# (See https://support.apple.com/en-us/HT201341 for the details).
-# Due to this change, we disable building X11 support for cairo on OS X by
-# default.
-if [[ ${HOST} =~ .*darwin.* ]]; then
-  # Raw LDFLAGS get passed via the compile and cause warnings. The linker tests break
-  # when there are warnings for some weird reason, (-pie is the cuplrit).
-  export LDFLAGS=${LDFLAGS_CC}
-fi
-
-# Most other autotools-based build systems add
-# prefix/include and prefix/lib automatically!
-export CFLAGS=${CFLAGS}" -I${PREFIX}/include"
-export CXXFLAGS=${CXXFLAGS}" -I${PREFIX}/include"
-export LDFLAGS=${LDFLAGS}" -L${PREFIX}/lib"
-
 ./configure \
     --prefix="${PREFIX}"  \
     --host=${HOST}        \
@@ -26,8 +10,6 @@ export LDFLAGS=${LDFLAGS}" -L${PREFIX}/lib"
     --enable-pthread      \
     --disable-gtk-doc     \
     $XWIN_ARGS
-
-
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
 # FAIL: check-link on OS X
