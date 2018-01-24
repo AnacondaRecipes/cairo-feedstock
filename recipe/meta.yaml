@@ -1,4 +1,5 @@
-{% set version = "1.14.10" %}
+# The 1.15 series is currently marked "snapshot" - let's stick with 1.14 until 1.15+ is "released"
+{% set version = "1.14.12" %}
 
 package:
   name: cairo
@@ -6,10 +7,10 @@ package:
 
 source:
   url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
-  sha1: 28c59d85d6b790c21b8b59ece73a6a1dda28d69a
+  sha1: 490025a0ba0622a853010f49fb6343f29fb70b9b
 
 build:
-  number: 6
+  number: 0
   run_exports:
     # Excellent behavior.  Only add new symbols.
     #    https://abi-laboratory.pro/tracker/timeline/cairo/
