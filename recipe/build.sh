@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ ${target_platform} == osx-64 ]]; then
+  XWIN_ARGS=--without-x
+else
+  XWIN_ARGS=--with-x
+fi
+
 ./configure \
     --prefix="${PREFIX}"  \
     --host=${HOST}        \
