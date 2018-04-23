@@ -1,0 +1,29 @@
+VERBOSE_AT:
+- V=1
+c_compiler:
+- vs2008
+cairo:
+- '1.14'
+cxx_compiler:
+- vs2008
+fontconfig:
+- '2.12'
+freetype:
+- 2.8.1
+glib:
+- '2.55'
+icu:
+- '58'
+libpng:
+- 1.6.32
+pixman:
+- '0.34'
+target_platform:
+- win-64
+xz:
+- '5.2'
+zip_keys:
+- - c_compiler
+  - cxx_compiler
+zlib:
+- '1.2'
