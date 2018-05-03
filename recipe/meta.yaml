@@ -29,18 +29,19 @@ requirements:
     - m2w64-xz                           # [win]
     - pkg-config                         # [not win]
     - libtool                            # [not win]
+    - make                               # [unix]
   host:
     - fontconfig                         # [not win]
     - freetype                           # [not win]
     - glib                               # [not win]
     - icu
-    - xz                                 # [not win]
-    - freetype     # [not win]
-    - fontconfig   # [not win]
-    - glib   # [not win]
+    - xz                                 # [not win or vc>=14]
+    - freetype                           # [not win]
+    - fontconfig                         # [not win]
+    - glib                               # [not win]
     - pixman
     - libpng
-    - libxcb
+    - libxcb   # [linux]
     - zlib
 
 test:
