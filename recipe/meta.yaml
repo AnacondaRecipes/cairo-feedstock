@@ -29,6 +29,7 @@ requirements:
     - m2w64-xz                           # [win]
     - pkg-config                         # [not win]
     - libtool                            # [not win]
+    - make                               # [not win]
   host:
     - fontconfig                         # [not win]
     - freetype                           # [not win]
