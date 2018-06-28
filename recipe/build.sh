@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [[ ${target_platform} == osx-64 ]]; then
+  rm -rf "${PREFIX}"/lib/libuuid.la "${PREFIX}"/lib/libuuid.a
   XWIN_ARGS=--without-x
 else
   XWIN_ARGS=--with-x
