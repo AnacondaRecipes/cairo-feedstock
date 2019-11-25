@@ -9,6 +9,7 @@ source:
   sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
 
 build:
+  skip: True  # [win]
   number: 0
   run_exports:
     - {{ pin_subpackage('cairo') }}
@@ -22,11 +23,15 @@ requirements:
     - automake              # [not win]
     - make                  # [not win]
     - xz                    # [not win]
-    - {{ compiler('c') }}
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
-    - xorg-renderproto      # [linux]
-    - xorg-xproto           # [linux]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ cdt('libx11-devel') }}          # [linux]
+    - {{ cdt('libxau-devel') }}          # [linux]
+    - {{ cdt('libxext-devel') }}         # [linux]
+    - {{ cdt('libxrender-devel') }}      # [linux]
+    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
   host:
     - freetype              # [not win]
     - fontconfig            # [not win]
@@ -35,11 +40,6 @@ requirements:
     - libpng
     - libxcb                # [linux]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
     - zlib
   run:
     - freetype              # [not win]
@@ -49,11 +49,6 @@ requirements:
     - libpng
     - libxcb                # [linux]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
     - zlib
 
 test:
