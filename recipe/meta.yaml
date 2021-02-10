@@ -36,7 +36,6 @@ requirements:
     - freetype              # [not win]
     - fontconfig            # [not win]
     - glib                  # [not win]
-    - icu
     - libpng
     - libxcb                # [linux]
     - pixman
@@ -45,7 +44,6 @@ requirements:
     - freetype              # [not win]
     - fontconfig            # [not win]
     - glib                  # [not win]
-    - icu
     - libpng
     - libxcb                # [linux]
     - pixman
