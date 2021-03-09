@@ -1,9 +1,17 @@
 #!/bin/bash
+set -u
+declare -a CONFIGURE_OTHER_ARGS
+
 if [[ ${target_platform} == osx-64 ]]; then
   rm -rf "${PREFIX}"/lib/libuuid.la "${PREFIX}"/lib/libuuid.a
-  XWIN_ARGS=--without-x
+  CONFIGURE_OTHER_ARGS=(--without-x)
 else
-  XWIN_ARGS=--with-x
+  CONFIGURE_OTHER_ARGS=(--with-x)
+  CONFIGURE_OTHER_ARGS+=(--enable-xcb)
+
+  # Needed to find .pc files from CDTs
+  : ${CONDA_BUILD_SYSROOT:=`"$CC" -print-sysroot`}
+  export PKG_CONFIG_PATH="${CONDA_BUILD_SYSROOT}/usr/lib64/pkgconfig"
 fi
 if [ $(uname -m) == x86_64 ]; then
     export ax_cv_c_float_words_bigendian="no"
@@ -19,7 +27,7 @@ find $PREFIX -name '*.la' -delete
     --enable-pdf \
     --enable-svg \
     --disable-gtk-doc \
-    $XWIN_ARGS
+    ${CONFIGURE_OTHER_ARGS[@]}
 
 make -j${CPU_COUNT}
 # FAIL: check-link on OS X
