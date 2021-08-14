@@ -2,7 +2,10 @@
 set -u
 declare -a CONFIGURE_OTHER_ARGS
 
-if [[ ${target_platform} == osx-64 ]]; then
+# Get an updated config.sub and config.guess
+cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* ./build
+
+if [[ ${target_platform} == osx-* ]]; then
   rm -rf "${PREFIX}"/lib/libuuid.la "${PREFIX}"/lib/libuuid.a
   CONFIGURE_OTHER_ARGS=(--without-x)
 else
