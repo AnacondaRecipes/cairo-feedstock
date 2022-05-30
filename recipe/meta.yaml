@@ -34,20 +34,20 @@ requirements:
     - {{ cdt('libxrender-devel') }}      # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
   host:
-    - freetype >=2.1.9      # [not win]
+    - freetype              # [not win]
     - fontconfig            # [not win]
     - glib                  # [not win]
     - libpng
     - libxcb                # [linux]
-    - pixman >=0.30
+    - pixman
     - zlib
   run:
-    - freetype >=2.1.9      # [not win]
+    - freetype              # [not win]
     - fontconfig            # [not win]
     - glib                  # [not win]
     - libpng
     - libxcb                # [linux]
-    - pixman >=0.30
+    - pixman
     - zlib
 
 test:
