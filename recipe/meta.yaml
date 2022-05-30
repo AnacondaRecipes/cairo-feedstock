@@ -1,16 +1,15 @@
-{% set version = "1.16.0" %}
+{% set version = "1.17.4" %}
 
 package:
   name: cairo
   version: {{ version }}
 
 source:
-  url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
-  sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
+  url: https://cairographics.org/snapshots/cairo-{{ version }}.tar.xz
+  sha256: 74b24c1ed436bbe87499179a3b27c43f4143b8676d8ad237a6fa787401959705
 
 build:
-  skip: True  # [win]
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -77,20 +76,21 @@ test:
     - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
 
 about:
-  home: http://cairographics.org/
+  home: https://cairographics.org/
   dev_url: https://gitlab.freedesktop.org/cairo/cairo
-  doc_url: https://www.cairographics.org/documentation/
-  license: LGPL 2.1 or MPL 1.1
-  license_file: COPYING
+  doc_url: https://cairographics.org/documentation/
+  doc_source_url: https://gitlab.freedesktop.org/cairo/cairo-www
+  license: LGPL-2.1-or-later or MPL-1.1
+  license_file: 
+    - COPYING
+    - COPYING-LGPL-2.1
+    - COPYING-MPL-1.1
+  license_family: LGPL
   summary: 'Cairo is a 2D graphics library with support for multiple output devices.'
-  
   description: |
     Cairo is a 2D graphics library with support for multiple output devices.
     It is designed to produce consistent output on all output media while
     taking advantage of display hardware acceleration when available.
-  doc_url: http://cairographics.org/documentation/
-  dev_url: https://cgit.freedesktop.org/cairo/
-  doc_source_url: https://cgit.freedesktop.org/cairo/tree/doc
 
 extra:
   recipe-maintainers:
