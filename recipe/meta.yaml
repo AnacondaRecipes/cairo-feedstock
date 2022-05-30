@@ -15,13 +15,11 @@ build:
 
 requirements:
   build:
-    - posix                 # [win]
-    - m2w64-xz              # [win]
     - pkg-config            # [not win]
     - libtool               # [not win]
     - automake              # [not win]
     - make                  # [not win]
-    - xz                    # [not win]
+    - xz
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - {{ compiler('c') }}
