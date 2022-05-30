@@ -1,23 +1,17 @@
-{% set version = "1.17.4" %}
+{% set version = "1.16.0" %}
 
 package:
   name: cairo
   version: {{ version }}
 
 source:
-  url: https://cairographics.org/snapshots/cairo-{{ version }}.tar.xz
-  sha256: 74b24c1ed436bbe87499179a3b27c43f4143b8676d8ad237a6fa787401959705
+  url: https://cairographics.org/releases/cairo-{{ version }}.tar.xz
+  sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
 
 build:
-  number: 0
+  number: 2
   run_exports:
     - {{ pin_subpackage('cairo') }}
-  missing_dso_whitelist:         # [linux and x86_64]
-    - '**/libc.so.6'             # [linux and x86_64]
-    - '**/libpthread.so.0'       # [linux and x86_64]
-    - '**/libdl.so.2'            # [linux and x86_64]
-    - '**/librt.so.1'            # [linux and x86_64]
-    - '**/libm.so.6'             # [linux and x86_64]
 
 requirements:
   build:
@@ -40,20 +34,20 @@ requirements:
     - {{ cdt('libxrender-devel') }}      # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
   host:
-    - freetype              # [not win]
+    - freetype >=2.1.9      # [not win]
     - fontconfig            # [not win]
     - glib                  # [not win]
     - libpng
     - libxcb                # [linux]
-    - pixman
+    - pixman >= 0.30
     - zlib
   run:
-    - freetype              # [not win]
+    - freetype >=2.1.9      # [not win]
     - fontconfig            # [not win]
     - glib                  # [not win]
     - libpng
     - libxcb                # [linux]
-    - pixman
+    - pixman >= 0.30
     - zlib
 
 test:
