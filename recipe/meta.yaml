@@ -72,13 +72,16 @@ test:
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.dylib  # [osx]
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.so     # [linux]
     {% endfor %}
+    - test -f $PREFIX/lib/cairo.dll                   # [win]
+    - test -f $PREFIX/lib/cairo.lib                   # [win]
+    - test -f $PREFIX/lib/cairo-static.lib            # [win]
 
     # Check pkg-config files.
     - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc   # [osx]
     - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [linux]
 
     # check include files
-    - test -f $PREFIX/include/cairo/cairo.h           # [unix]
+    - test -f $PREFIX/include/cairo/cairo.h           
 
     # check that cairo was built with fontconfig support
     - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
