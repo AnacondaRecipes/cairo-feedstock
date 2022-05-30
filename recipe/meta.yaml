@@ -39,7 +39,7 @@ requirements:
     - glib                  # [not win]
     - libpng
     - libxcb                # [linux]
-    - pixman >= 0.30
+    - pixman >=0.30
     - zlib
   run:
     - freetype >=2.1.9      # [not win]
@@ -47,7 +47,7 @@ requirements:
     - glib                  # [not win]
     - libpng
     - libxcb                # [linux]
-    - pixman >= 0.30
+    - pixman >=0.30
     - zlib
 
 test:
