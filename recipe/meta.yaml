@@ -7,6 +7,9 @@ package:
 source:
   url: https://cairographics.org/releases/cairo-{{ version }}.tar.xz
   sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
+  patches:
+    - windows_enable_cairo_gobject.patch  # [win]
+    - windows_pc_files.patch  # [win]
 
 build:
   number: 2
@@ -35,7 +38,6 @@ requirements:
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     - {{ cdt('libx11-devel') }}          # [linux]
     - {{ cdt('libxau-devel') }}          # [linux]
     - {{ cdt('libxext-devel') }}         # [linux]
@@ -44,7 +46,7 @@ requirements:
   host:
     - freetype              # [not win]
     - fontconfig            # [not win]
-    - glib                  # [not win]
+    - glib
     - libpng
     - libxcb                # [linux]
     - pixman
@@ -52,7 +54,7 @@ requirements:
   run:
     - freetype              # [not win]
     - fontconfig            # [not win]
-    - glib                  # [not win]
+    - glib
     - libpng
     - libxcb                # [linux]
     - pixman
@@ -74,13 +76,16 @@ test:
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.dylib      # [osx]
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.so         # [linux]
     {% endfor %}
-    - if not exist %LIBRARY_BIN%\\cairo.dll exit 1        # [win]
-    - if not exist %LIBRARY_LIB%\\cairo.lib exit 1        # [win]
-    - if not exist %LIBRARY_LIB%\\cairo-static.lib exit 1 # [win]
+    - if not exist %LIBRARY_BIN%\\cairo.dll exit 1          # [win]
+    - if not exist %LIBRARY_LIB%\\cairo.lib exit 1          # [win]
+    - if not exist %LIBRARY_LIB%\\cairo-static.lib exit 1   # [win]
+    - if not exist %LIBRARY_BIN%\\cairo-gobject.dll exit 1  # [win]
+    - if not exist %LIBRARY_LIB%\\cairo-gobject.lib exit 1  # [win]
 
     # Check pkg-config files.
-    - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc       # [osx]
-    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc         # [linux]
+    - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc             # [osx]
+    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc               # [linux]   
+    - if not exist %LIBRARY_LIB%\\pkgconfig\\cairo.pc exit 1    # [win]  
 
     # check include files
     - test -f $PREFIX/include/cairo/cairo.h               # [unix]    
