@@ -18,6 +18,8 @@ build:
     - '**/libdl.so.2'            # [linux and x86_64]
     - '**/librt.so.1'            # [linux and x86_64]
     - '**/libm.so.6'             # [linux and x86_64]
+  ignore_run_exports:            # [win]
+    - pixman                     # [win] (static link)
 
 requirements:
   build:
@@ -68,20 +70,21 @@ test:
             "libcairo-script-interpreter",
     ] %}
     {% for each_cairo_lib in cairo_libs %}
-    - test -f $PREFIX/lib/{{ each_cairo_lib }}.a      # [not win]
-    - test -f $PREFIX/lib/{{ each_cairo_lib }}.dylib  # [osx]
-    - test -f $PREFIX/lib/{{ each_cairo_lib }}.so     # [linux]
+    - test -f $PREFIX/lib/{{ each_cairo_lib }}.a          # [not win]
+    - test -f $PREFIX/lib/{{ each_cairo_lib }}.dylib      # [osx]
+    - test -f $PREFIX/lib/{{ each_cairo_lib }}.so         # [linux]
     {% endfor %}
-    - test -f $PREFIX/lib/cairo.dll                   # [win]
-    - test -f $PREFIX/lib/cairo.lib                   # [win]
-    - test -f $PREFIX/lib/cairo-static.lib            # [win]
+    - if not exist %LIBRARY_BIN%\\cairo.dll exit 1        # [win]
+    - if not exist %LIBRARY_LIB%\\cairo.lib exit 1        # [win]
+    - if not exist %LIBRARY_LIB%\\cairo-static.lib exit 1 # [win]
 
     # Check pkg-config files.
-    - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc   # [osx]
-    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [linux]
+    - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc       # [osx]
+    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc         # [linux]
 
     # check include files
-    - test -f $PREFIX/include/cairo/cairo.h           
+    - test -f $PREFIX/include/cairo/cairo.h               # [unix]    
+    - if not exist %LIBRARY_INC%\\cairo\\cairo.h exit 1   # [win]        
 
     # check that cairo was built with fontconfig support
     - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
