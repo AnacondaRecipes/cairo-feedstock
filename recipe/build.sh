@@ -16,7 +16,7 @@ else
   : ${CONDA_BUILD_SYSROOT:=`"$CC" -print-sysroot`}
   export PKG_CONFIG_PATH="${CONDA_BUILD_SYSROOT}/usr/lib64/pkgconfig"
 fi
-if [ $(uname -m) == x86_64 ]; then
+if [ $(uname -m) == x86_64 ] || [ $(uname -m) == aarch64 ]; then
     export ax_cv_c_float_words_bigendian="no"
 fi
 bash autogen.sh
