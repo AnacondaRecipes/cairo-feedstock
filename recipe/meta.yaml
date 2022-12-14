@@ -12,7 +12,7 @@ source:
     - windows_pc_files.patch  # [win]
 
 build:
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage('cairo') }}
   missing_dso_whitelist:         # [linux and x86_64]
@@ -44,16 +44,16 @@ requirements:
     - {{ cdt('libxrender-devel') }}      # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
   host:
-    - freetype              # [not win]
-    - fontconfig            # [not win]
+    - freetype
+    - fontconfig
     - glib
     - libpng
     - libxcb                # [linux]
     - pixman
     - zlib
   run:
-    - freetype              # [not win]
-    - fontconfig            # [not win]
+    - freetype
+    - fontconfig
     - glib
     - libpng
     - libxcb                # [linux]
