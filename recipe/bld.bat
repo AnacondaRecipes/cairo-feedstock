@@ -10,8 +10,7 @@ make -f Makefile.win32 CFG=release ^
   PIXMAN_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/pixman ^
   PIXMAN_LIBS=%CYGWIN_PREFIX%/Library/lib/pixman-1.lib ^
   FONTCONFIG_LIBS=%CYGWIN_PREFIX%/Library/lib/fontconfig.lib ^
-  FREETYPEG_LIBS=%CYGWIN_PREFIX%/Library/lib/freetype.lib
-^
+  FREETYPEG_LIBS=%CYGWIN_PREFIX%/Library/lib/freetype.lib ^
   ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/ ^
@@ -26,10 +25,8 @@ make -f Makefile.win32 CFG=release ^
   FREETYPEG_LIBS=%CYGWIN_PREFIX%/Library/lib/freetype.lib ^
   ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
-  FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/
- ^
-    FONTCONFIG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/fontcon
-fig/ ^
+  FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/ ^
+  FONTCONFIG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/fontconfig/ ^
   GOBJECT_CFLAGS='-I%CYGWIN_PREFIX%/Library/include/glib-2.0 -I%CYGWIN_PREFIX%/Library/lib/glib-2.0/include' ^
   GOBJECT_LIBS='%CYGWIN_PREFIX%/Library/lib/glib-2.0.lib %CYGWIN_PREFIX%/Library/lib/gobject-2.0.lib'
 if errorlevel 1 exit 1
