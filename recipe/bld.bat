@@ -9,6 +9,9 @@ set "MSYS2_ARG_CONV_EXCL=/AI;/AL;/OUT;/out"
 make -f Makefile.win32 CFG=release ^
   PIXMAN_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/pixman ^
   PIXMAN_LIBS=%CYGWIN_PREFIX%/Library/lib/pixman-1.lib ^
+  FONTCONFIG_LIBS=%CYGWIN_PREFIX%/Library/lib/fontconfig.lib ^
+  FREETYPEG_LIBS=%CYGWIN_PREFIX%/Library/lib/freetype.lib
+^
   ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/ ^
@@ -19,6 +22,8 @@ pushd util\cairo-gobject
 make -f Makefile.win32 CFG=release ^
   PIXMAN_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/pixman ^
   PIXMAN_LIBS=%CYGWIN_PREFIX%/Library/lib/pixman-1.lib ^
+  FONTCONFIG_LIBS=%CYGWIN_PREFIX%/Library/lib/fontconfig.lib ^
+  FREETYPEG_LIBS=%CYGWIN_PREFIX%/Library/lib/freetype.lib ^
   ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/
