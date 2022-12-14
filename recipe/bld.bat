@@ -11,6 +11,8 @@ make -f Makefile.win32 CFG=release ^
   PIXMAN_LIBS=%CYGWIN_PREFIX%/Library/lib/pixman-1.lib ^
   ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
+  FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/ ^
+  FONTCONFIG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/fontconfig/ ^
   CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %CYGWIN_PREFIX%/Library/lib/libpng.lib %CYGWIN_PREFIX%/Library/lib/zlib.lib'
 if errorlevel 1 exit 1
 pushd util\cairo-gobject
@@ -19,6 +21,10 @@ make -f Makefile.win32 CFG=release ^
   PIXMAN_LIBS=%CYGWIN_PREFIX%/Library/lib/pixman-1.lib ^
   ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
+  FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/
+ ^
+    FONTCONFIG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/fontcon
+fig/ ^
   GOBJECT_CFLAGS='-I%CYGWIN_PREFIX%/Library/include/glib-2.0 -I%CYGWIN_PREFIX%/Library/lib/glib-2.0/include' ^
   GOBJECT_LIBS='%CYGWIN_PREFIX%/Library/lib/glib-2.0.lib %CYGWIN_PREFIX%/Library/lib/gobject-2.0.lib'
 if errorlevel 1 exit 1
