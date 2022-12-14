@@ -46,7 +46,6 @@ requirements:
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
     - patch     # [not win]
     - m2-patch  # [win]
-    - gtk2  # [not win]
 
   host:
     - freetype

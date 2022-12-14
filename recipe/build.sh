@@ -5,6 +5,10 @@ declare -a CONFIGURE_OTHER_ARGS
 # Get an updated config.sub and config.guess
 cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* ./build
 
+conda create -p $SRC_DIR/cyclictool gtk2 --yes --quiet
+
+export PATH=$SRC_DIR/cyclictool/bin:$PATH
+
 if [[ ${target_platform} == osx-* ]]; then
   rm -rf "${PREFIX}"/lib/libuuid.la "${PREFIX}"/lib/libuuid.a
   CONFIGURE_OTHER_ARGS=(--without-x)
