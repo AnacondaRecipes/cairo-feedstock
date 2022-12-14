@@ -15,7 +15,7 @@ make -f Makefile.win32 CFG=release ^
   LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
   FREETYPE_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/freetype/ ^
   FONTCONFIG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/fontconfig/ ^
-  CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %CYGWIN_PREFIX%/Library/lib/libpng.lib %CYGWIN_PREFIX%/Library/lib/freetype.lib %CYGWIN_PREFIX%/Library/lib/zlib.lib'
+  CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %CYGWIN_PREFIX%/Library/lib/libpng.lib %CYGWIN_PREFIX%/Library/lib/freetype.libi %CYGWIN_PREFIX%/Library/lib/fontconfig.lib %CYGWIN_PREFIX%/Library/lib/zlib.lib'
 if errorlevel 1 exit 1
 pushd util\cairo-gobject
 make -f Makefile.win32 CFG=release ^
