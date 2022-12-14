@@ -10,7 +10,8 @@ source:
   patches:
     - windows_enable_cairo_gobject.patch  # [win]
     - windows_pc_files.patch  # [win]
-
+    - windows_enable_freetype.patch  # [win]
+    - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 build:
   number: 3
   run_exports:
@@ -43,6 +44,9 @@ requirements:
     - {{ cdt('libxext-devel') }}         # [linux]
     - {{ cdt('libxrender-devel') }}      # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
+    - patch     # [not win]
+    - m2-patch  # [win]
+
   host:
     - freetype
     - fontconfig
@@ -51,6 +55,7 @@ requirements:
     - libxcb                # [linux]
     - pixman
     - zlib
+
   run:
     - freetype
     - fontconfig
