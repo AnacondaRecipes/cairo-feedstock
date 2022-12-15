@@ -5,13 +5,9 @@ setlocal enableextensions enabledelayedexpansion
 set "MSYS2_ARG_CONV_EXCL=/AI;/AL;/OUT;/out"
 
 :: Setting variables in Cygwin style.
-set LIBRARY_INC_CW=!LIBRARY_INC:\=/!
-set LIBRARY_INC_CW=!LIBRARY_INC_CW::=!
-set LIBRARY_INC_CW=/%LIBRARY_INC_CW%
+set LIBRARY_INC_CW=%CYGWIN_PREFIX%/Library/include
 
-set LIBRARY_LIB_CW=!LIBRARY_LIB:\=/!
-set LIBRARY_LIB_CW=!LIBRARY_LIB_CW::=!
-set LIBRARY_LIB_CW=/%LIBRARY_LIB_CW%
+set LIBRARY_LIB_CW=%CYGWIN_PREFIX%/Library/lib
 
 :: Compiling.
 make -f Makefile.win32 CFG=release ^
