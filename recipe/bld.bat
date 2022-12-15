@@ -1,26 +1,30 @@
-@echo on
 setlocal enableextensions enabledelayedexpansion
 
 :: Trailing semicolon in this variable as set by current (2017/01)
 :: conda-build breaks us. Manual fix:
 set "MSYS2_ARG_CONV_EXCL=/AI;/AL;/OUT;/out"
 
+:: Setting variables in Cygwin style.
+set LIBRARY_INC_CW=%CYGWIN_PREFIX%/Library/include
+
+set LIBRARY_LIB_CW=%CYGWIN_PREFIX%/Library/lib
+
 :: Compiling.
 make -f Makefile.win32 CFG=release ^
-  PIXMAN_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/pixman ^
-  PIXMAN_LIBS=%CYGWIN_PREFIX%/Library/lib/pixman-1.lib ^
-  ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
-  LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
-  CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %CYGWIN_PREFIX%/Library/lib/libpng.lib %CYGWIN_PREFIX%/Library/lib/zlib.lib'
+  PIXMAN_CFLAGS=-I%LIBRARY_INC_CW%/pixman ^
+  PIXMAN_LIBS=%LIBRARY_LIB_CW%/pixman-1.lib ^
+  ZLIB_CFLAGS=-I%LIBRARY_INC_CW% ^
+  LIBPNG_CFLAGS=-I%LIBRARY_INC_CW% ^
+  CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %LIBRARY_LIB_CW%/libpng.lib %LIBRARY_LIB_CW%/zlib.lib %LIBRARY_LIB_CW%/freetype.lib %LIBRARY_LIB_CW%/fontconfig.lib'
 if errorlevel 1 exit 1
 pushd util\cairo-gobject
 make -f Makefile.win32 CFG=release ^
-  PIXMAN_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/pixman ^
-  PIXMAN_LIBS=%CYGWIN_PREFIX%/Library/lib/pixman-1.lib ^
-  ZLIB_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
-  LIBPNG_CFLAGS=-I%CYGWIN_PREFIX%/Library/include/ ^
-  GOBJECT_CFLAGS='-I%CYGWIN_PREFIX%/Library/include/glib-2.0 -I%CYGWIN_PREFIX%/Library/lib/glib-2.0/include' ^
-  GOBJECT_LIBS='%CYGWIN_PREFIX%/Library/lib/glib-2.0.lib %CYGWIN_PREFIX%/Library/lib/gobject-2.0.lib'
+  PIXMAN_CFLAGS=-I%LIBRARY_INC_CW%/pixman ^
+  PIXMAN_LIBS=%LIBRARY_LIB_CW%/pixman-1.lib ^
+  ZLIB_CFLAGS=-I%LIBRARY_INC_CW% ^
+  LIBPNG_CFLAGS=-I%LIBRARY_INC_CW% ^
+  GOBJECT_CFLAGS='-I%LIBRARY_INC_CW%/glib-2.0 -I%LIBRARY_LIB_CW%/glib-2.0/include' ^
+  GOBJECT_LIBS='%LIBRARY_LIB_CW%/glib-2.0.lib %LIBRARY_LIB_CW%/gobject-2.0.lib'
 if errorlevel 1 exit 1
 popd
 
