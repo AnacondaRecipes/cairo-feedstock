@@ -7,7 +7,7 @@ package:
 source:
   url: https://cairographics.org/releases/cairo-{{ version }}.tar.xz
   sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
-  patches:
+  patches: # [osx or win]
     - windows_enable_cairo_gobject.patch  # [win]
     - windows_pc_files.patch  # [win]
     - windows_enable_freetype.patch  # [win]
@@ -44,7 +44,7 @@ requirements:
     - {{ cdt('libxext-devel') }}         # [linux]
     - {{ cdt('libxrender-devel') }}      # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - patch     # [not win]
+    - patch     # [osx]
     - m2-patch  # [win]
 
   host:
@@ -104,7 +104,6 @@ about:
   home: https://cairographics.org/
   dev_url: https://gitlab.freedesktop.org/cairo/cairo
   doc_url: https://cairographics.org/documentation/
-  doc_source_url: https://gitlab.freedesktop.org/cairo/cairo-www
   license: LGPL-2.1-or-later or MPL-1.1
   license_file: 
     - COPYING
