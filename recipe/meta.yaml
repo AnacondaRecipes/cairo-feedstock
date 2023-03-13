@@ -54,7 +54,7 @@ requirements:
     - icu 58  # [not (s390x or aarch64 or (osx and arm64))]
     - icu 68  # [s390x or aarch64 or (osx and arm64)]
     - libpng 1.6
-    - libxcb                # [linux]
+    - libxcb 1.15               # [linux]
     - pixman 0.40
     - zlib 1.2.*
 
