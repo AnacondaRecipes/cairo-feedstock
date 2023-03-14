@@ -7,13 +7,13 @@ package:
 source:
   url: https://cairographics.org/releases/cairo-{{ version }}.tar.xz
   sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
-  patches:
+  patches: # [osx or win]
     - windows_enable_cairo_gobject.patch  # [win]
     - windows_pc_files.patch  # [win]
     - windows_enable_freetype.patch  # [win]
     - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 build:
-  number: 3
+  number: 4
   run_exports:
     - {{ pin_subpackage('cairo') }}
   missing_dso_whitelist:         # [linux and x86_64]
@@ -22,11 +22,10 @@ build:
     - '**/libdl.so.2'            # [linux and x86_64]
     - '**/librt.so.1'            # [linux and x86_64]
     - '**/libm.so.6'             # [linux and x86_64]
-  ignore_run_exports:            # [win]
-    - pixman                     # [win] (static link)
 
 requirements:
   build:
+    - posix   # [win]
     - pkg-config            # [not win]
     - libtool               # [not win]
     - automake              # [not win]
@@ -35,7 +34,8 @@ requirements:
     - m2-libtool            # [win]
     - m2-automake-wrapper   # [win]
     - m2-make               # [win]
-    - xz
+    - xz  # [not win]
+    - m2w64-xz  # [win]
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - {{ compiler('c') }}
@@ -44,17 +44,19 @@ requirements:
     - {{ cdt('libxext-devel') }}         # [linux]
     - {{ cdt('libxrender-devel') }}      # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - patch     # [not win]
+    - patch     # [osx]
     - m2-patch  # [win]
 
   host:
-    - freetype
-    - fontconfig
-    - glib
-    - libpng
-    - libxcb                # [linux]
-    - pixman
-    - zlib
+    - freetype 2.10
+    - fontconfig 2.14
+    - glib 2
+    - icu 58  # [not (s390x or aarch64 or (osx and arm64))]
+    - icu 68  # [s390x or aarch64 or (osx and arm64)]
+    - libpng 1.6
+    - libxcb 1.15               # [linux]
+    - pixman 0.40
+    - zlib 1.2.*
 
   run:
     - freetype
@@ -103,7 +105,6 @@ about:
   home: https://cairographics.org/
   dev_url: https://gitlab.freedesktop.org/cairo/cairo
   doc_url: https://cairographics.org/documentation/
-  doc_source_url: https://gitlab.freedesktop.org/cairo/cairo-www
   license: LGPL-2.1-or-later or MPL-1.1
   license_file: 
     - COPYING
