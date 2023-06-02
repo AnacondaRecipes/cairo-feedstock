@@ -1,8 +1,5 @@
-channels:
-  icu73: icu73
-
-aggregate_branch: icu-73.1
-
+# the conda-build parameters to use for disabling --skip-existing
 build_parameters:
   - "--suppress-variables"
   - "--error-overlinking"
+

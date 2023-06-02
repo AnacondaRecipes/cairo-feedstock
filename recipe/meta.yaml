@@ -13,7 +13,7 @@ source:
     - windows_enable_freetype.patch  # [win]
     - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 build:
-  number: 5
+  number: 4
   run_exports:
     - {{ pin_subpackage('cairo') }}
   missing_dso_whitelist:         # [linux and x86_64]
@@ -51,7 +51,8 @@ requirements:
     - freetype 2.10
     - fontconfig 2.14
     - glib 2
-    - icu {{ icu }}
+    - icu 58  # [not (s390x or aarch64 or (osx and arm64))]
+    - icu 68  # [s390x or aarch64 or (osx and arm64)]
     - libpng 1.6
     - libxcb 1.15               # [linux]
     - pixman 0.40
