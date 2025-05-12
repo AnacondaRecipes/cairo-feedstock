@@ -39,11 +39,6 @@ requirements:
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - {{ compiler('c') }}
-    - {{ cdt('libx11-devel') }}          # [linux]
-    - {{ cdt('libxau-devel') }}          # [linux]
-    - {{ cdt('libxext-devel') }}         # [linux]
-    - {{ cdt('libxrender-devel') }}      # [linux]
-    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
     - patch     # [osx]
     - m2-patch  # [win]
 
@@ -56,6 +51,11 @@ requirements:
     - pixman 0.40
     - zlib 1.2.*
 
+    - xorg-libx11
+    - xorg-libxau
+    - xorg-libxext
+    - xorg-libxrender
+    - xorg-xproto
   run:
     - freetype
     - fontconfig
