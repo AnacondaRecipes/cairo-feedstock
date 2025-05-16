@@ -45,7 +45,8 @@ find $PREFIX -name '*.la' -delete
     --enable-pdf \
     --enable-svg \
     --disable-gtk-doc \
-    ${CONFIGURE_OTHER_ARGS[@]}
+    --enable-gl \
+    "${CONFIGURE_OTHER_ARGS[@]}"
 
 make -j${CPU_COUNT}
 # FAIL: check-link on OS X
