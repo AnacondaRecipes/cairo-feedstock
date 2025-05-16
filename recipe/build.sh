@@ -45,7 +45,6 @@ find $PREFIX -name '*.la' -delete
     --enable-pdf \
     --enable-svg \
     --disable-gtk-doc \
-    --enable-gl \
     "${CONFIGURE_OTHER_ARGS[@]}"
 
 make -j${CPU_COUNT}
