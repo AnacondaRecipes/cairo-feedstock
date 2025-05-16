@@ -48,13 +48,9 @@ requirements:
     - libpng 1.6
     - libxcb               # [linux]
     - pixman 0.40
-    - xorg-libice          # [linux]
-    - xorg-libsm           # [linux]
     - xorg-libx11          # [linux]
-    - xorg-libxau          # [linux]
     - xorg-libxext         # [linux]
     - xorg-libxrender      # [linux]
-    - xorg-xorgproto       # [linux]
     - zlib 1.2.*
   run:
     - fontconfig
@@ -68,11 +64,6 @@ requirements:
 test:
   requires:
     - pkg-config
-    # The packages below are needed for the pkg-config invocations
-    - expat
-    - glib
-    - xorg-xorgproto       # [linux]
-    - zlib
   commands:
     # Check commands.
     - cairo-trace --help  # [not win]
