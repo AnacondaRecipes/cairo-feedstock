@@ -37,6 +37,10 @@ fi
 bash autogen.sh
 
 find $PREFIX -name '*.la' -delete
+
+# Ensure PKG_CONFIG_PATH includes $PREFIX/lib/pkgconfig for pkg-config detection (e.g., glib)
+export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:-}:${PREFIX}/lib/pkgconfig:$BUILD_PREFIX/$BUILD/sysroot/usr/lib64/pkgconfig:$BUILD_PREFIX/$BUILD/sysroot/usr/share/pkgconfig
+
 ./configure \
     --prefix="${PREFIX}" \
     --enable-warnings \
