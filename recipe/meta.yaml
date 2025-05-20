@@ -55,7 +55,6 @@ requirements:
   run:
     - fontconfig
     - freetype
-    - glib
     - libpng
     - libxcb                # [linux]
     - pixman

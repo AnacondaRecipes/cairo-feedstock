@@ -38,9 +38,6 @@ bash autogen.sh
 
 find $PREFIX -name '*.la' -delete
 
-# Ensure PKG_CONFIG_PATH includes $PREFIX/lib/pkgconfig for pkg-config detection (e.g., glib)
-export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:-}:${PREFIX}/lib/pkgconfig:$BUILD_PREFIX/$BUILD/sysroot/usr/lib64/pkgconfig:$BUILD_PREFIX/$BUILD/sysroot/usr/share/pkgconfig
-
 ./configure \
     --prefix="${PREFIX}" \
     --enable-warnings \
@@ -56,7 +53,5 @@ make -j${CPU_COUNT}
 # Hangs for > 10 minutes on Linux
 #make check -j${CPU_COUNT}
 make install -j${CPU_COUNT}
-
-ldd $PREFIX/lib/libcairo.so
 
 find $PREFIX -name '*.la' -delete
