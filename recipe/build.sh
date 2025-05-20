@@ -56,4 +56,7 @@ make -j${CPU_COUNT}
 # Hangs for > 10 minutes on Linux
 #make check -j${CPU_COUNT}
 make install -j${CPU_COUNT}
+
+ldd $PREFIX/lib/libcairo.so
+
 find $PREFIX -name '*.la' -delete
