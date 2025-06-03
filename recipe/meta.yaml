@@ -44,14 +44,14 @@ requirements:
   host:
     - fontconfig 2.14
     - freetype 2.10
-    - glib 2
-    - libpng 1.6
-    - libxcb               # [linux]
-    - pixman 0.40
-    - xorg-libx11          # [linux]
-    - xorg-libxext         # [linux]
-    - xorg-libxrender      # [linux]
-    - zlib 1.2.*
+    - glib {{ glib }}
+    - libpng {{ libpng }}
+    - libxcb {{ libxcb }}                    # [linux]
+    - pixman {{ pixman }}
+    - xorg-libx11 {{ xorg_libx11 }}          # [linux]
+    - xorg-libxext {{ xorg_libxext }}        # [linux]
+    - xorg-libxrender {{ xorg_libxrender }}  # [linux]
+    - zlib {{ zlib }}
   run:
     - fontconfig
     - freetype
