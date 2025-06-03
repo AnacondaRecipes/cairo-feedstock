@@ -13,7 +13,7 @@ source:
     - windows_enable_freetype.patch  # [win]
     - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 build:
-  number: 5
+  number: 6
   run_exports:
     - {{ pin_subpackage('cairo') }}
   missing_dso_whitelist:         # [linux and x86_64]
@@ -37,35 +37,32 @@ requirements:
     - xz  # [not win]
     - m2w64-xz  # [win]
     - pthread-stubs         # [linux]
-    - xcb-proto             # [linux]
     - {{ compiler('c') }}
-    - {{ cdt('libx11-devel') }}          # [linux]
-    - {{ cdt('libxau-devel') }}          # [linux]
-    - {{ cdt('libxext-devel') }}         # [linux]
-    - {{ cdt('libxrender-devel') }}      # [linux]
-    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
     - patch     # [osx]
     - m2-patch  # [win]
 
   host:
-    - freetype 2.10
     - fontconfig 2.14
-    - glib 2
-    - libpng 1.6
-    - libxcb 1.15               # [linux]
-    - pixman 0.40
-    - zlib 1.2.*
-
+    - freetype 2.10
+    - glib {{ glib }}
+    - libpng {{ libpng }}
+    - libxcb {{ libxcb }}                    # [linux]
+    - pixman {{ pixman }}
+    - xorg-libx11 {{ xorg_libx11 }}          # [linux]
+    - xorg-libxext {{ xorg_libxext }}        # [linux]
+    - xorg-libxrender {{ xorg_libxrender }}  # [linux]
+    - zlib {{ zlib }}
   run:
-    - freetype
     - fontconfig
-    - glib
+    - freetype
     - libpng
     - libxcb                # [linux]
     - pixman
     - zlib
 
 test:
+  requires:
+    - pkg-config
   commands:
     # Check commands.
     - cairo-trace --help  # [not win]
@@ -98,6 +95,13 @@ test:
 
     # check that cairo was built with fontconfig support
     - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
+    
+    # verify pkg-config functionality
+    - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig        # [not win]
+    - set "PKG_CONFIG_PATH=%LIBRARY_LIB%\\pkgconfig"      # [win]
+    - pkg-config --cflags cairo
+    - pkg-config --cflags cairo-fc                         # [not win]
+    - pkg-config --cflags cairo-gobject
 
 about:
   home: https://cairographics.org/

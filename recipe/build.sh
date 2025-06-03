@@ -37,6 +37,7 @@ fi
 bash autogen.sh
 
 find $PREFIX -name '*.la' -delete
+
 ./configure \
     --prefix="${PREFIX}" \
     --enable-warnings \
@@ -45,11 +46,12 @@ find $PREFIX -name '*.la' -delete
     --enable-pdf \
     --enable-svg \
     --disable-gtk-doc \
-    ${CONFIGURE_OTHER_ARGS[@]}
+    "${CONFIGURE_OTHER_ARGS[@]}"
 
 make -j${CPU_COUNT}
 # FAIL: check-link on OS X
 # Hangs for > 10 minutes on Linux
 #make check -j${CPU_COUNT}
 make install -j${CPU_COUNT}
+
 find $PREFIX -name '*.la' -delete
