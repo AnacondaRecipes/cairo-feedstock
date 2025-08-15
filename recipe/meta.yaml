@@ -41,7 +41,7 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - patch     # [osx]
-    - msys2-patch  # [win]
+    - m2-patch  # [win]
 
   host:
     - fontconfig 2.14
