@@ -2,7 +2,3 @@
 build_parameters:
   - "--suppress-variables"
   - "--error-overlinking"
-
-channels:
-  - https://staging.continuum.io/prefect/fs/pixman-feedstock/pr5/5463e0b
-

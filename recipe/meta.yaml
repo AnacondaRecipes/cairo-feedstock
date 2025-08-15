@@ -49,7 +49,7 @@ requirements:
     - glib {{ glib }}
     - libpng {{ libpng }}
     - libxcb {{ libxcb }}                    # [linux]
-    - pixman 0.46.4
+    - pixman {{ pixman }}
     - xorg-libx11 {{ xorg_libx11 }}          # [linux]
     - xorg-libxext {{ xorg_libxext }}        # [linux]
     - xorg-libxrender {{ xorg_libxrender }}  # [linux]
