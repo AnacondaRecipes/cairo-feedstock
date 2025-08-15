@@ -38,9 +38,10 @@ requirements:
     - xz  # [not win]
     - m2w64-xz  # [win]
     - pthread-stubs         # [linux]
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - patch     # [osx]
-    - m2-patch  # [win]
+    - msys2-patch  # [win]
 
   host:
     - fontconfig 2.14
