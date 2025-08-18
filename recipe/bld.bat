@@ -15,7 +15,7 @@ set LIBRARY_LIB_CW=/%LIBRARY_LIB_CW%
 
 :: Compiling.
 make -f Makefile.win32 CFG=release ^
-  PIXMAN_CFLAGS=-I%LIBRARY_INC_CW%/pixman ^
+  PIXMAN_CFLAGS=-I%LIBRARY_INC_CW%/pixman-1 ^
   PIXMAN_LIBS=%LIBRARY_LIB_CW%/pixman-1.lib ^
   ZLIB_CFLAGS=-I%LIBRARY_INC_CW% ^
   LIBPNG_CFLAGS=-I%LIBRARY_INC_CW% ^
@@ -23,7 +23,7 @@ make -f Makefile.win32 CFG=release ^
 if errorlevel 1 exit 1
 pushd util\cairo-gobject
 make -f Makefile.win32 CFG=release ^
-  PIXMAN_CFLAGS=-I%LIBRARY_INC_CW%/pixman ^
+  PIXMAN_CFLAGS=-I%LIBRARY_INC_CW%/pixman-1 ^
   PIXMAN_LIBS=%LIBRARY_LIB_CW%/pixman-1.lib ^
   ZLIB_CFLAGS=-I%LIBRARY_INC_CW% ^
   LIBPNG_CFLAGS=-I%LIBRARY_INC_CW% ^
