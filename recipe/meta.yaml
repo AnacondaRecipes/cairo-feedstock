@@ -47,6 +47,7 @@ requirements:
     - freetype
     - libpng
     - libxcb  # [linux]
+    - glib
     - pixman
     - zlib
 
