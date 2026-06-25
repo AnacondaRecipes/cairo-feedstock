@@ -28,8 +28,8 @@ requirements:
     - ninja-base
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
+    - meson  # analint: python_build_tools_in_host
   host:
-    - meson
     - fontconfig {{ fontconfig }}
     - freetype {{ freetype }}
     - glib {{ glib }}
@@ -45,13 +45,13 @@ requirements:
     - freetype
     - libpng
     - libxcb  # [linux]
-    - glib
     - pixman
     - zlib
 
 test:
   requires:
     - pkg-config
+    - glib
   commands:
     # Check commands.
     - cairo-trace --help  # [unix]
