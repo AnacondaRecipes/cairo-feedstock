@@ -12,7 +12,7 @@ source:
     - patches/unvendor.patch  
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('cairo') }}
   missing_dso_whitelist:         # [linux and x86_64]
@@ -26,11 +26,9 @@ requirements:
   build:
     - pkg-config
     - ninja-base
-    - meson
-    - xz  # [unix]
-    - m2w64-xz  # [win]
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
+    - meson  # analint: python_build_tools_in_host
   host:
     - fontconfig {{ fontconfig }}
     - freetype {{ freetype }}
@@ -53,19 +51,15 @@ requirements:
 test:
   requires:
     - pkg-config
+    - glib
   commands:
     # Check commands.
     - cairo-trace --help  # [unix]
 
     # Verify libraries.
-    {% set cairo_libs = [
-            "libcairo",
-            "libcairo-gobject",
-            "libcairo-script-interpreter",
-    ] %}
-    {% for each_cairo_lib in cairo_libs %}
-    - test -f $PREFIX/lib/{{ each_cairo_lib }}${SHLIB_EXT}  # [unix]
-    {% endfor %}
+    - test -f $PREFIX/lib/libcairo${SHLIB_EXT}  # [unix]
+    - test -f $PREFIX/lib/libcairo-gobject${SHLIB_EXT}  # [unix]
+    - test -f $PREFIX/lib/libcairo-script-interpreter${SHLIB_EXT}  # [unix]
     - if not exist %LIBRARY_BIN%\\cairo*.dll exit 1          # [win]
     - if not exist %LIBRARY_LIB%\\cairo.lib exit 1          # [win]
     - if not exist %LIBRARY_BIN%\\cairo-gobject*.dll exit 1  # [win]
